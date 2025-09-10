@@ -1,3 +1,5 @@
+local vim = vim
+local add, later, now = MiniDeps.add, MiniDeps.later, MiniDeps.now
 local o, g, map = vim.o, vim.g, vim.keymap.set
 
 o.relativenumber = true
@@ -17,8 +19,6 @@ map("n", "<space>d", vim.diagnostic.setloclist)
 vim.diagnostic.config {
 	virtual_text = true
 }
-
-local add, later, now = MiniDeps.add, MiniDeps.later, MiniDeps.now
 
 now(function()
 	add { source = "echasnovski/mini.notify" }
@@ -77,6 +77,7 @@ later(function()
 	vim.lsp.inlay_hint.enable()
 
 	map('n', '<space>f', function() vim.lsp.buf.format { async = true } end)
+	map('v', 'f', function() vim.lsp.buf.format { async = true } end)
 	map('n', '<space>r', vim.lsp.buf.references)
 end)
 
@@ -121,5 +122,5 @@ end)
 later(function()
 	add { source = "Exafunction/windsurf.vim" }
 	g.codeium_disable_bindings = 1
-	map('i', '<C-f>', function () return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
+	map('i', '<C-f>', function() return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
 end)
