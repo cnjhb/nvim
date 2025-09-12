@@ -1,4 +1,5 @@
 local vim = vim
+local MiniDeps = MiniDeps
 local add, later, now = MiniDeps.add, MiniDeps.later, MiniDeps.now
 local o, g, map = vim.o, vim.g, vim.keymap.set
 
@@ -75,6 +76,20 @@ later(function()
 	add { source = "neovim/nvim-lspconfig" }
 	vim.lsp.enable { 'clangd', "lua_ls", "bashls" }
 	vim.lsp.inlay_hint.enable()
+	vim.lsp.config('lua_ls', {
+		settings = {
+			Lua = {
+				hint = {
+					enable = true,
+					setType = true
+				},
+				type = {
+					inferParamType = true,
+					checkTableShape = true,
+				},
+			}
+		}
+	})
 
 	map('n', '<space>f', function() vim.lsp.buf.format { async = true } end)
 	map('v', 'f', function() vim.lsp.buf.format { async = true } end)
