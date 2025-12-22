@@ -74,7 +74,7 @@ end)
 
 later(function()
 	add { source = "neovim/nvim-lspconfig" }
-	vim.lsp.enable { 'clangd', "lua_ls", "bashls" }
+	vim.lsp.enable { 'clangd', "lua_ls", "bashls", "jsonls", "pylsp" }
 	vim.lsp.inlay_hint.enable()
 	vim.lsp.config('lua_ls', {
 		settings = {
@@ -138,4 +138,9 @@ later(function()
 	add { source = "Exafunction/windsurf.vim" }
 	g.codeium_disable_bindings = 1
 	map('i', '<C-f>', function() return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
+end)
+
+later(function()
+	add { source = "nvim-mini/mini.cmdline" }
+	require "mini.cmdline".setup()
 end)
