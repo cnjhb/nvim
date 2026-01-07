@@ -76,6 +76,9 @@ later(function()
 	add { source = "neovim/nvim-lspconfig" }
 	vim.lsp.enable { 'clangd', "lua_ls", "bashls", "jsonls", "pylsp" }
 	vim.lsp.inlay_hint.enable()
+	vim.lsp.config('clangd', {
+		cmd = { 'clangd', '--fallback-style=Webkit' }
+	})
 	vim.lsp.config('lua_ls', {
 		settings = {
 			Lua = {
