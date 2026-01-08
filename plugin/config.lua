@@ -86,6 +86,9 @@ later(function()
 					enable = true,
 					setType = true
 				},
+				runtime = {
+					version = "LuaJIT",
+				},
 				type = {
 					inferParamType = true,
 					checkTableShape = true,
