@@ -63,6 +63,7 @@ later(function()
 	add { source = 'skywind3000/asynctasks.vim', depends = { 'skywind3000/asyncrun.vim' }, }
 	g.asyncrun_rootmarks = { '.build_root' }
 	g.asyncrun_open = 6
+	map('n', '<f4>', "<cmd>AsyncStop<cr>")
 	map('n', '<f5>', "<cmd>AsyncTask file-run<cr>")
 	map('n', '<f6>', "<cmd>AsyncTask project-run<cr>")
 	map('n', '<f7>', "<cmd>AsyncTask project-build<cr>")
