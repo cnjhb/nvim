@@ -113,6 +113,9 @@ later(function()
 	local pick = require 'mini.pick'
 	pick.setup {}
 	map("n", "<C-p>", function() pick.builtin.files { tool = 'rg' } end)
+	map("n", "<leader>p", function()
+		pick.builtin.grep_live { tool = 'rg' }
+	end)
 end)
 
 later(function()
@@ -150,4 +153,9 @@ end)
 later(function()
 	add { source = "nvim-mini/mini.cmdline" }
 	require "mini.cmdline".setup()
+end)
+
+later(function()
+	add { source = "gnsfujiwara/suda.nvim" }
+	require "suda".setup {}
 end)
