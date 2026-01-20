@@ -156,6 +156,5 @@ later(function()
 end)
 
 later(function()
-	add { source = "gnsfujiwara/suda.nvim" }
-	require "suda".setup {}
+	add { source = "lambdalisue/vim-suda" }
 end)
