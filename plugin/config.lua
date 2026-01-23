@@ -75,7 +75,13 @@ end)
 
 later(function()
 	add { source = "neovim/nvim-lspconfig" }
-	vim.lsp.enable { 'clangd', "lua_ls", "bashls", "jsonls", "pylsp" }
+	vim.lsp.enable { 'clangd',
+		"lua_ls",
+		"bashls",
+		"jsonls",
+		"pylsp",
+		"lemminx",
+	}
 	vim.lsp.inlay_hint.enable()
 	vim.lsp.config('clangd', {
 		cmd = { 'clangd', '--fallback-style=Webkit' }
@@ -153,8 +159,4 @@ end)
 later(function()
 	add { source = "nvim-mini/mini.cmdline" }
 	require "mini.cmdline".setup()
-end)
-
-later(function()
-	add { source = "lambdalisue/vim-suda" }
 end)
