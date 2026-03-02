@@ -75,12 +75,14 @@ end)
 
 later(function()
 	add { source = "neovim/nvim-lspconfig" }
-	vim.lsp.enable { 'clangd',
+	vim.lsp.enable {
+		"clangd",
 		"lua_ls",
 		"bashls",
 		"jsonls",
 		"pylsp",
 		"lemminx",
+		"vala_ls",
 	}
 	vim.lsp.inlay_hint.enable()
 	vim.lsp.config('clangd', {
