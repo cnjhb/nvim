@@ -54,6 +54,11 @@ later(function()
 	}
 end)
 
+later(function ()
+	add { source = 'nvim-treesitter/nvim-treesitter-context' }
+	require 'treesitter-context'.setup {}
+end)
+
 later(function()
 	add { source = "nvim-mini/mini.icons" }
 	require "mini.icons".setup {}
