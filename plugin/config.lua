@@ -22,19 +22,19 @@ vim.diagnostic.config {
 }
 
 now(function()
-	add { source = "echasnovski/mini.notify" }
+	add { source = "nvim-mini/mini.notify" }
 	local notify = require "mini.notify"
 	notify.setup {}
 	vim.notify = notify.make_notify {}
 end)
 
 now(function()
-	add { source = "echasnovski/mini.tabline" }
+	add { source = "nvim-mini/mini.tabline" }
 	require "mini.tabline".setup {}
 end)
 
 now(function()
-	add { source = "echasnovski/mini.statusline" }
+	add { source = "nvim-mini/mini.statusline" }
 	require "mini.statusline".setup {}
 end)
 
@@ -55,7 +55,7 @@ later(function()
 end)
 
 later(function()
-	add { source = "echasnovski/mini.icons" }
+	add { source = "nvim-mini/mini.icons" }
 	require "mini.icons".setup {}
 end)
 
@@ -112,12 +112,12 @@ later(function()
 end)
 
 later(function()
-	add { source = "echasnovski/mini.animate" }
+	add { source = "nvim-mini/mini.animate" }
 	require 'mini.animate'.setup { scroll = { enable = false } }
 end)
 
 later(function()
-	add { source = "echasnovski/mini.pick" }
+	add { source = "nvim-mini/mini.pick" }
 	local pick = require 'mini.pick'
 	pick.setup {}
 	map("n", "<C-p>", function() pick.builtin.files { tool = 'rg' } end)
@@ -127,28 +127,28 @@ later(function()
 end)
 
 later(function()
-	add { source = "echasnovski/mini.indentscope" }
+	add { source = "nvim-mini/mini.indentscope" }
 	require "mini.indentscope".setup {}
 end)
 
 later(function()
-	add { source = "echasnovski/mini.diff" }
+	add { source = "nvim-mini/mini.diff" }
 	require "mini.diff".setup {}
 end)
 
 
 later(function()
-	add { source = "echasnovski/mini.cursorword" }
+	add { source = "nvim-mini/mini.cursorword" }
 	require "mini.cursorword".setup {}
 end)
 
 later(function()
-	add { source = "echasnovski/mini.completion" }
+	add { source = "nvim-mini/mini.completion" }
 	require "mini.completion".setup {}
 end)
 
 later(function()
-	add("echasnovski/mini.snippets")
+	add { source = "nvim-mini/mini.snippets" }
 	require "mini.snippets".setup {}
 end)
 
@@ -161,4 +161,9 @@ end)
 later(function()
 	add { source = "nvim-mini/mini.cmdline" }
 	require "mini.cmdline".setup()
+end)
+
+later(function()
+	add { source = "nvim-mini/mini.clue" }
+	require "mini.clue".setup()
 end)
