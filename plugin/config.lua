@@ -17,6 +17,11 @@ o.fileencodings = "ucs-bom,utf-8,gb2312,default,latin1"
 
 map("n", "<M-q>", "<cmd>q<cr>")
 map("n", "<space>d", vim.diagnostic.setloclist)
+
+vim.api.nvim_create_user_command("PackUpdate", function ()
+	vim.pack.update()
+end,{})
+
 vim.diagnostic.config {
 	virtual_text = true
 }
