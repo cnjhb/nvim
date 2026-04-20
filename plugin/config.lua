@@ -1,6 +1,6 @@
 local vim = vim
-local MiniDeps = MiniDeps
-local add, later, now = MiniDeps.add, MiniDeps.later, MiniDeps.now
+local misc = require "mini.misc"
+local add, later, now = vim.pack.add, function(f) misc.safely('later', f) end, function(f) misc.safely('now', f) end
 local o, g, map = vim.o, vim.g, vim.keymap.set
 
 o.relativenumber = true
@@ -22,30 +22,30 @@ vim.diagnostic.config {
 }
 
 now(function()
-	add { source = "nvim-mini/mini.notify" }
+	add { "https://github.com/nvim-mini/mini.notify" }
 	local notify = require "mini.notify"
 	notify.setup {}
 	vim.notify = notify.make_notify {}
 end)
 
 now(function()
-	add { source = "nvim-mini/mini.tabline" }
+	add { "https://github.com/nvim-mini/mini.tabline" }
 	require "mini.tabline".setup {}
 end)
 
 now(function()
-	add { source = "nvim-mini/mini.statusline" }
+	add { "https://github.com/nvim-mini/mini.statusline" }
 	require "mini.statusline".setup {}
 end)
 
 now(function()
-	add { source = "dracula/vim" }
+	add { "https://github.com/dracula/vim" }
 	vim.cmd [[ colo dracula ]]
 end)
 
 later(function()
-	add { source = "nvim-treesitter/nvim-treesitter" }
-	require 'nvim-treesitter.configs'.setup {
+	add { "https://github.com/nvim-treesitter/nvim-treesitter" }
+	require 'nvim-treesitter'.setup {
 		ensure_installed = { "bash" },
 		highlight = {
 			enable = true,
@@ -54,18 +54,19 @@ later(function()
 	}
 end)
 
-later(function ()
-	add { source = 'nvim-treesitter/nvim-treesitter-context' }
+later(function()
+	add { "https://github.com/nvim-treesitter/nvim-treesitter-context" }
 	require 'treesitter-context'.setup {}
 end)
 
 later(function()
-	add { source = "nvim-mini/mini.icons" }
+	add { "https://github.com/nvim-mini/mini.icons" }
 	require "mini.icons".setup {}
 end)
 
 later(function()
-	add { source = 'skywind3000/asynctasks.vim', depends = { 'skywind3000/asyncrun.vim' }, }
+	add { "https://github.com/skywind3000/asyncrun.vim" }
+	add { "https://github.com/skywind3000/asynctasks.vim" }
 	g.asyncrun_rootmarks = { '.build_root' }
 	g.asyncrun_open = 6
 	map('n', '<f4>', "<cmd>AsyncStop<cr>")
@@ -75,11 +76,11 @@ later(function()
 end)
 
 later(function()
-	add { source = "skywind3000/vim-terminal-help" }
+	add { "https://github.com/skywind3000/vim-terminal-help" }
 end)
 
 later(function()
-	add { source = "neovim/nvim-lspconfig" }
+	add { "https://github.com/neovim/nvim-lspconfig" }
 	vim.lsp.enable {
 		"clangd",
 		"lua_ls",
@@ -117,12 +118,12 @@ later(function()
 end)
 
 later(function()
-	add { source = "nvim-mini/mini.animate" }
+	add { "https://github.com/nvim-mini/mini.animate" }
 	require 'mini.animate'.setup { scroll = { enable = false } }
 end)
 
 later(function()
-	add { source = "nvim-mini/mini.pick" }
+	add { "https://github.com/nvim-mini/mini.pick" }
 	local pick = require 'mini.pick'
 	pick.setup {}
 	map("n", "<C-p>", function() pick.builtin.files { tool = 'rg' } end)
@@ -132,43 +133,43 @@ later(function()
 end)
 
 later(function()
-	add { source = "nvim-mini/mini.indentscope" }
+	add { "https://github.com/nvim-mini/mini.indentscope" }
 	require "mini.indentscope".setup {}
 end)
 
 later(function()
-	add { source = "nvim-mini/mini.diff" }
+	add { "https://github.com/nvim-mini/mini.diff" }
 	require "mini.diff".setup {}
 end)
 
 
 later(function()
-	add { source = "nvim-mini/mini.cursorword" }
+	add { "https://github.com/nvim-mini/mini.cursorword" }
 	require "mini.cursorword".setup {}
 end)
 
 later(function()
-	add { source = "nvim-mini/mini.completion" }
+	add { "https://github.com/nvim-mini/mini.completion" }
 	require "mini.completion".setup {}
 end)
 
 later(function()
-	add { source = "nvim-mini/mini.snippets" }
+	add { "https://github.com/nvim-mini/mini.snippets" }
 	require "mini.snippets".setup {}
 end)
 
 later(function()
-	add { source = "Exafunction/windsurf.vim" }
+	add { "https://github.com/Exafunction/windsurf.vim" }
 	g.codeium_disable_bindings = 1
 	map('i', '<C-f>', function() return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
 end)
 
 later(function()
-	add { source = "nvim-mini/mini.cmdline" }
+	add { "https://github.com/nvim-mini/mini.cmdline" }
 	require "mini.cmdline".setup()
 end)
 
 later(function()
-	add { source = "nvim-mini/mini.clue" }
+	add { "https://github.com/nvim-mini/mini.clue" }
 	require "mini.clue".setup()
 end)

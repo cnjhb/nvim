@@ -5,4 +5,4 @@ end
 
 vim.lsp.log.set_level(vim.log.levels.OFF)
 
-require('mini.deps').setup {}
+vim.pack.add { "https://github.com/nvim-mini/mini.misc" }
