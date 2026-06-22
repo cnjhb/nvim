@@ -45,7 +45,7 @@ end)
 
 now(function()
 	add { "https://github.com/dracula/vim" }
-	vim.cmd [[ colo dracula ]]
+	vim.cmd [[ colo alucard ]]
 end)
 
 later(function()
