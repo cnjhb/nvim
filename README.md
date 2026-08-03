@@ -479,14 +479,6 @@ end)
 
 ---
 
-## 📞 联系方式
-
-- **作者**: [Your Name]
-- **邮箱**: [your.email@example.com]
-- **GitHub**: [https://github.com/yourusername](https://github.com/yourusername)
-
----
-
 ## 🙏 致谢
 
 特别感谢以下项目：
