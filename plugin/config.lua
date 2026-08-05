@@ -131,7 +131,7 @@ later(function()
 	add { "https://github.com/nvim-mini/mini.pick" }
 	local pick = require 'mini.pick'
 	pick.setup {}
-	map("n", "<C-p>", function() pick.builtin.files { tool = 'rg' } end)
+	map("n", "<C-p>", function() pick.builtin.files { tool = 'fd' } end)
 	map("n", "<leader>p", function()
 		pick.builtin.grep_live { tool = 'rg' }
 	end)
