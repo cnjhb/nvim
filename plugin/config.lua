@@ -18,6 +18,12 @@ o.fileencodings = "ucs-bom,utf-8,gb2312,default,latin1"
 map("n", "<M-q>", "<cmd>q<cr>")
 map("n", "<space>d", vim.diagnostic.setloclist)
 
+for _, value in ipairs { 'h', 'j', 'k', 'l' } do
+	map("n", "<M-" .. value:upper() .. ">", "<c-w>" .. value)
+	map("i", "<M-" .. value:upper() .. ">", "<esc><c-w>" .. value)
+	map("t", "<M-" .. value:upper() .. ">", "<c-\\><c-n><c-w>" .. value)
+end
+
 vim.api.nvim_create_user_command("PackUpdate", function()
 	vim.pack.update()
 end, {})
@@ -46,6 +52,14 @@ end)
 now(function()
 	add { "https://github.com/dracula/vim" }
 	vim.cmd [[ colo alucard ]]
+end)
+
+later(function()
+	add { "https://github.com/ingur/floatty.nvim" }
+	local term = require "floatty".setup {
+	}
+	map("n", "<M-=>", term.toggle)
+	map("t", "<M-=>", term.toggle)
 end)
 
 later(function()
@@ -78,10 +92,6 @@ later(function()
 	map('n', '<f5>', "<cmd>AsyncTask file-run<cr>")
 	map('n', '<f6>', "<cmd>AsyncTask project-run<cr>")
 	map('n', '<f7>', "<cmd>AsyncTask project-build<cr>")
-end)
-
-later(function()
-	add { "https://github.com/skywind3000/vim-terminal-help" }
 end)
 
 later(function()
