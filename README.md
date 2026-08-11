@@ -20,6 +20,8 @@
 - [🔧 LSP 支持](#-lsp-支持)
 - [📝 任务管理](#-任务管理)
 - [🎨 主题与界面](#-主题与界面)
+- [🖥️ 浮动终端](#️-浮动终端-floattynvim)
+- [⌨️ 按键显示](#️-按键显示-screenkeynvim)
 - [🤖 AI 辅助](#-ai-辅助)
 - [🔩 自定义配置](#-自定义配置)
 - [📄 许可证](#-许可证)
@@ -31,8 +33,8 @@
 - **⚡ 极致性能**：Lua 编写，启动速度快，资源占用低
 - **🎯 完整 Mini 生态**：集成 15+ mini.nvim 插件
 - **🔍 智能补全**：mini.completion + mini.snippets
-- **📁 高效文件管理**：mini.pick 基于 ripgrep 的快速搜索
-- **📊 现代化界面**：Alucard 主题 + mini.statusline + mini.tabline
+- **📁 高效文件管理**：mini.pick 基于 fd/rg 的快速搜索
+- **📊 现代化界面**：Dracula 主题 + mini.statusline + mini.tabline
 - **🔧 LSP 支持**：7+ 语言服务器（Clangd, LuaLS, PyLSP 等）
 - **📋 异步任务系统**：AsyncRun + AsyncTasks 支持
 - **🌳 语法高亮**：Treesitter + Treesitter Context
@@ -40,6 +42,8 @@
 - **🤖 AI 辅助**：windsurf.vim (Codeium) 智能补全
 - **📢 通知系统**：mini.notify 优雅通知
 - **🎨 平滑动画**：mini.animate 视觉增强
+- **🖥️ 浮动终端**：floatty.nvim 便捷终端管理
+- **⌨️ 按键显示**：screenkey.nvim 显示当前按键
 
 ---
 
@@ -76,7 +80,7 @@
 
 | 插件 | 描述 | 加载方式 |
 |------|------|----------|
-| [dracula/vim](https://github.com/dracula/vim) | Dracula/Alucard 主题 | 立即加载 |
+| [dracula/vim](https://github.com/dracula/vim) | Dracula 主题 | 立即加载 |
 
 ### 任务与工具
 
@@ -84,7 +88,13 @@
 |------|------|----------|
 | [asyncrun.vim](https://github.com/skywind3000/asyncrun.vim) | 异步任务运行 | 延迟加载 |
 | [asynctasks.vim](https://github.com/skywind3000/asynctasks.vim) | 任务管理系统 | 延迟加载 |
-| [vim-terminal-help](https://github.com/skywind3000/vim-terminal-help) | 终端辅助 | 延迟加载 |
+
+### 终端与辅助
+
+| 插件 | 描述 | 加载方式 |
+|------|------|----------|
+| [floatty.nvim](https://github.com/ingur/floatty.nvim) | 浮动终端 | 延迟加载 |
+| [screenkey.nvim](https://github.com/NStefan002/screenkey.nvim) | 按键显示 | 延迟加载 |
 
 ### AI 辅助
 
@@ -103,7 +113,8 @@
 - Neovim >= 0.9.0
 - Git
 - Node.js >= 18.0.0 (LSP 支持)
-- ripgrep (mini.pick 搜索)
+- fd (mini.pick 文件搜索)
+- ripgrep (mini.pick 内容搜索)
 
 # 可选 LSP 服务器
 - clangd (C/C++ LSP)
@@ -123,7 +134,7 @@ mv ~/.config/nvim ~/.config/nvim.bak
 mv ~/.local/share/nvim ~/.local/share/nvim.bak
 
 # 2. 克隆配置
-git clone https://github.com/yourusername/nvim-config.git ~/.config/nvim
+git clone https://github.com/cnjhb/nvim.git ~/.config/nvim
 
 # 3. 启动 Neovim
 nvim
@@ -184,6 +195,17 @@ o.smartcase = true         -- 智能大小写
 o.ignorecase = true        -- 忽略大小写
 ```
 
+### 窗口导航增强
+
+```lua
+-- Alt+大写字母 快速切换窗口
+for _, value in ipairs { 'h', 'j', 'k', 'l' } do
+    map("n", "<M-" .. value:upper() .. ">", "<c-w>" .. value)
+    map("i", "<M-" .. value:upper() .. ">", "<esc><c-w>" .. value)
+    map("t", "<M-" .. value:upper() .. ">", "<c-\\><c-n><c-w>" .. value)
+end
+```
+
 ### 加载策略
 
 配置采用分层加载策略：
@@ -208,11 +230,20 @@ end)
 
 ## ⌨️ 快捷键映射
 
+### 窗口导航
+
+| 快捷键 | 功能 | 模式 |
+|--------|------|------|
+| `<M-H>` | 切换到左窗口 | Normal/Insert/Terminal |
+| `<M-J>` | 切换到下窗口 | Normal/Insert/Terminal |
+| `<M-K>` | 切换到上窗口 | Normal/Insert/Terminal |
+| `<M-L>` | 切换到右窗口 | Normal/Insert/Terminal |
+| `<M-q>` | 关闭窗口 | Normal |
+
 ### 基础快捷键
 
 | 快捷键 | 功能 | 模式 |
 |--------|------|------|
-| `<M-q>` | 关闭窗口 | Normal |
 | `<space>d` | 诊断到位置列表 | Normal |
 | `<space>f` | 格式化代码 | Normal |
 | `<space>r` | 查找引用 | Normal |
@@ -221,8 +252,8 @@ end)
 
 | 快捷键 | 功能 |
 |--------|------|
-| `<C-p>` | 文件搜索 (mini.pick) |
-| `<leader>p` | 内容实时搜索 (mini.pick) |
+| `<C-p>` | 文件搜索 (mini.pick, 使用 fd) |
+| `<leader>p` | 内容实时搜索 (mini.pick, 使用 rg) |
 
 ### 任务管理
 
@@ -233,18 +264,17 @@ end)
 | `<F7>` | 构建项目 |
 | `<F4>` | 停止当前任务 |
 
+### 浮动终端
+
+| 快捷键 | 功能 |
+|--------|------|
+| `<M-=>` | 切换浮动终端 (Normal/Terminal) |
+
 ### AI 辅助
 
 | 快捷键 | 功能 |
 |--------|------|
 | `<C-f>` | 接受 Codeium 补全 (插入模式) |
-
-### 窗口管理
-
-| 快捷键 | 功能 |
-|--------|------|
-| `<space>d` | 打开诊断列表 |
-| `<M-q>` | 关闭当前窗口 |
 
 ---
 
@@ -349,7 +379,7 @@ output=quickfix
 
 ### 主题
 
-- **主题**：Alucard (基于 Dracula)
+- **主题**：Dracula
 - **图标**：mini.icons 提供文件类型图标
 - **状态栏**：mini.statusline 自定义状态信息
 - **标签栏**：mini.tabline 显示缓冲区标签
@@ -368,6 +398,43 @@ require "mini.indentscope".setup {}
 
 -- 平滑滚动 (禁用滚动动画提升性能)
 require 'mini.animate'.setup { scroll = { enable = false } }
+```
+
+---
+
+## 🖥️ 浮动终端 (floatty.nvim)
+
+### 功能
+
+- 按 `<M-=>` 快速切换浮动终端
+- 支持 Normal/Insert/Terminal 模式
+- 美观的浮动窗口
+
+### 使用
+
+```vim
+" 切换浮动终端
+<M-=>
+
+" 在终端中执行命令
+:floatty
+```
+
+---
+
+## ⌨️ 按键显示 (screenkey.nvim)
+
+### 功能
+
+- 实时显示当前按键
+- 适合录屏演示或学习
+- 可自定义显示位置和样式
+
+### 使用
+
+```vim
+" 切换按键显示
+:ScreenkeyToggle
 ```
 
 ---
@@ -441,7 +508,7 @@ output=terminal
 ```lua
 -- 在 config.lua 中修改
 map("n", "<C-p>", function()
-    pick.builtin.files { tool = 'rg' }
+    pick.builtin.files { tool = 'fd' }
 end)
 ```
 
@@ -449,14 +516,16 @@ end)
 
 ## 📝 更新日志
 
-### v1.0.0 (2026-08-03)
+### v1.0.0 (2026-08-11)
 - ✨ 初始版本发布
 - 📦 集成 15+ mini.nvim 插件
 - 🔧 完整的 LSP 支持 (7+ 语言)
 - 📋 AsyncRun/AsyncTasks 任务系统
-- 🎨 Dracula/Alucard 主题
+- 🎨 Dracula 主题
 - 🤖 Codeium AI 辅助
-- 🔍 mini.pick 文件搜索
+- 🔍 mini.pick 文件搜索 (fd/rg)
+- 🖥️ floatty.nvim 浮动终端
+- ⌨️ screenkey.nvim 按键显示
 - ⚡ 分层加载策略优化启动速度
 
 ---
@@ -487,6 +556,7 @@ end)
 - [asyncrun.vim](https://github.com/skywind3000/asyncrun.vim) - 强大的异步任务工具
 - [Codeium](https://codeium.com/) - 免费的 AI 代码补全
 - [Dracula Theme](https://draculatheme.com/) - 经典配色方案
+- [floatty.nvim](https://github.com/ingur/floatty.nvim) - 优雅的浮动终端
 - [Neovim](https://neovim.io/) - 现代化的 Vim 分支
 
 ---
