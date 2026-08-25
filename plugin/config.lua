@@ -51,7 +51,7 @@ end)
 
 now(function()
 	add { "https://github.com/dracula/vim" }
-	vim.cmd [[ colo alucard ]]
+	vim.cmd [[ colo dracula ]]
 end)
 
 later(function()
@@ -187,4 +187,9 @@ end)
 later(function()
 	add { "https://github.com/nvim-mini/mini.clue" }
 	require "mini.clue".setup()
+end)
+
+later(function()
+	add { "https://github.com/NStefan002/screenkey.nvim" }
+	require("screenkey").setup {}
 end)
