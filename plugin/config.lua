@@ -14,6 +14,8 @@ o.splitbelow = true
 o.smartcase = true
 o.ignorecase = true
 o.fileencodings = "ucs-bom,utf-8,gb2312,default,latin1"
+-- 不解析文件首尾的 vim:/vi:/ex: modeline，避免厂商源码注释误触发
+o.modeline = false
 
 map("n", "<M-q>", "<cmd>q<cr>")
 map("n", "<space>d", vim.diagnostic.setloclist)
