@@ -1,0 +1,96 @@
+{
+  "plugins": {
+    "asyncrun.vim": {
+      "rev": "98d3c0fdeb983f0ef62fe3a49da440f6d2c045ce",
+      "src": "https://github.com/skywind3000/asyncrun.vim"
+    },
+    "asynctasks.vim": {
+      "rev": "281cca79bf98ffe3913427b76adae59413823bd7",
+      "src": "https://github.com/skywind3000/asynctasks.vim"
+    },
+    "floatty.nvim": {
+      "rev": "ba6c7cd828474084001d131fc0160fcb3bbef6d2",
+      "src": "https://github.com/ingur/floatty.nvim"
+    },
+    "mini.animate": {
+      "rev": "ed7d4a2a6fac1777e6da1446127eea87dd2419b5",
+      "src": "https://github.com/nvim-mini/mini.animate"
+    },
+    "mini.clue": {
+      "rev": "79974f485028a3212f5a3f23b0095f8d0ae6f494",
+      "src": "https://github.com/nvim-mini/mini.clue"
+    },
+    "mini.cmdline": {
+      "rev": "70bc6cd8615b681bb4ad6e35c1c832f775397207",
+      "src": "https://github.com/nvim-mini/mini.cmdline"
+    },
+    "mini.completion": {
+      "rev": "ace27587795b84ae6a83b9bc7ff63aec0eebc252",
+      "src": "https://github.com/nvim-mini/mini.completion"
+    },
+    "mini.cursorword": {
+      "rev": "1600b99d6adab31e7ab3c231111100dbbcefad58",
+      "src": "https://github.com/nvim-mini/mini.cursorword"
+    },
+    "mini.diff": {
+      "rev": "2890bd1edc42b57af769774e53c2bfbbe3f45d4d",
+      "src": "https://github.com/nvim-mini/mini.diff"
+    },
+    "mini.icons": {
+      "rev": "eab3e692d796d78ea6ffc978d8a380ff26fcf4e3",
+      "src": "https://github.com/nvim-mini/mini.icons"
+    },
+    "mini.indentscope": {
+      "rev": "b26a8ee619c0f4158dd4df1a8151b236b7d100bc",
+      "src": "https://github.com/nvim-mini/mini.indentscope"
+    },
+    "mini.misc": {
+      "rev": "1e9cae4ee48176252a7ddee28133cf9764b74c58",
+      "src": "https://github.com/nvim-mini/mini.misc"
+    },
+    "mini.notify": {
+      "rev": "04dae72c012de9db45c4250645170f78f826731e",
+      "src": "https://github.com/nvim-mini/mini.notify"
+    },
+    "mini.pick": {
+      "rev": "32ead2c8016a68487de87f23d604135843b0196d",
+      "src": "https://github.com/nvim-mini/mini.pick"
+    },
+    "mini.snippets": {
+      "rev": "810c9aeb976791e3c329e0f073c82dab70fed8a7",
+      "src": "https://github.com/nvim-mini/mini.snippets"
+    },
+    "mini.statusline": {
+      "rev": "d7133a9a244a8d93ccee42ff37fb9499af5956fb",
+      "src": "https://github.com/nvim-mini/mini.statusline"
+    },
+    "mini.tabline": {
+      "rev": "3dd8686c15e3cfb1bfbc4abfecf699326f1de4c0",
+      "src": "https://github.com/nvim-mini/mini.tabline"
+    },
+    "nvim-lspconfig": {
+      "rev": "adfbb74472f6c231b651b650a89f414c2680fb31",
+      "src": "https://github.com/neovim/nvim-lspconfig"
+    },
+    "nvim-treesitter": {
+      "rev": "0195cd62fa89950f34c0e0d648ea7897ab85d4d3",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+    },
+    "nvim-treesitter-context": {
+      "rev": "8decd73460d26ef0a0befb745d022dd1fc2c38b8",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter-context"
+    },
+    "screenkey.nvim": {
+      "rev": "740e238d1f143cb5f3a9d932f9c5142d3581b986",
+      "src": "https://github.com/NStefan002/screenkey.nvim"
+    },
+    "vim": {
+      "rev": "c689958744a93851b870e17ede7e9cbd28bc7cf8",
+      "src": "https://github.com/dracula/vim"
+    },
+    "windsurf.vim": {
+      "rev": "c5c027c31ba8afd38a718c650f363437fbaeb4bc",
+      "src": "https://github.com/Exafunction/windsurf.vim"
+    }
+  }
+}
